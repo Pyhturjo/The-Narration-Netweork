@@ -35,6 +35,47 @@ if (menuToggle && mobileMenu) {
     if (innerWidth > 700) closeMenu();
   });
 }
+/* Fan carousel: cover-flow style — one active card up front, two scaled
+   cards fanned on each side, cycled with the arrow buttons or by
+   clicking a side card directly. */
+const fan = document.querySelector("#fan");
+if (fan) {
+  const cards = [...fan.querySelectorAll(".fan-card")];
+  const dotsWrap = document.querySelector("#fan-dots");
+  const len = cards.length;
+  let active = 2;
+
+  cards.forEach((card, i) => {
+    const dot = document.createElement("span");
+    dotsWrap.appendChild(dot);
+    card.addEventListener("click", () => {
+      active = i;
+      render();
+    });
+  });
+  const dots = [...dotsWrap.children];
+
+  const offsets = [0, 1, 2, 3, -2, -1];
+
+  function render() {
+    cards.forEach((card, i) => {
+      const slot = (i - active + len) % len;
+      card.dataset.pos = offsets[slot];
+    });
+    dots.forEach((d, i) => d.classList.toggle("active", i === active));
+  }
+
+  document.querySelector("#fan-prev").addEventListener("click", () => {
+    active = (active - 1 + len) % len;
+    render();
+  });
+  document.querySelector("#fan-next").addEventListener("click", () => {
+    active = (active + 1) % len;
+    render();
+  });
+
+  render();
+}
 
 /* Hero search bar: scrolls to the network section instead of submitting anywhere */
 const heroSearch = document.querySelector("#hero-search");

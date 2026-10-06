@@ -129,28 +129,45 @@ body.menu-open{overflow:hidden;}
 .b-motion{background:var(--motion);color:#141311;}
 .b-culture{background:var(--culture);}
 
-/* fan carousel */
+/* fan carousel (depth / cover-flow style) */
+.fan-wrap{margin-top:48px;}
 .fan{
-  margin-top:44px;display:flex;justify-content:center;align-items:flex-end;
-  gap:0;overflow:visible;padding:0 0 10px;
+  position:relative;height:250px;
+  display:flex;justify-content:center;align-items:center;
 }
 .fan-card{
-  width:132px;height:176px;border-radius:16px;overflow:hidden;flex:none;
-  box-shadow:0 18px 34px rgba(20,15,10,.22), 0 0 0 3px var(--ring,#000);
-  margin:0 -18px;transition:transform .25s ease,box-shadow .25s ease;background:#000;
-  border:4px solid #fff;
+  position:absolute;width:150px;height:200px;border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 40px rgba(20,15,10,.28), 0 0 0 3px var(--ring,#000);
+  background:#000;border:4px solid #fff;cursor:pointer;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease;
 }
 .fan-card img{width:100%;height:100%;object-fit:cover;}
-.fan-card:hover{transform:translateY(-10px) scale(1.03) !important;}
-.fan-card:nth-child(1){transform:rotate(-20deg) translateY(34px);z-index:1;--ring:var(--culture);}
-.fan-card:nth-child(2){transform:rotate(-11deg) translateY(14px);z-index:2;--ring:var(--sport);}
-.fan-card:nth-child(3){transform:rotate(-3deg) translateY(0);z-index:3;--ring:var(--news);}
-.fan-card:nth-child(4){transform:rotate(3deg) translateY(0);z-index:3;--ring:var(--verify);}
-.fan-card:nth-child(5){transform:rotate(11deg) translateY(14px);z-index:2;--ring:var(--english);}
-.fan-card:nth-child(6){transform:rotate(20deg) translateY(34px);z-index:1;--ring:var(--motion);}
 
-@media (max-width:760px){
-  .fan-card{width:80px;height:106px;margin:0 -12px;border-radius:11px;}
+.fan-card[data-pos="0"]{transform:translate(0,0) scale(1) rotate(0deg);z-index:50;opacity:1;filter:none;}
+.fan-card[data-pos="1"]{transform:translate(78px,18px) scale(.84) rotate(10deg);z-index:40;opacity:.92;}
+.fan-card[data-pos="-1"]{transform:translate(-78px,18px) scale(.84) rotate(-10deg);z-index:40;opacity:.92;}
+.fan-card[data-pos="2"]{transform:translate(150px,38px) scale(.68) rotate(20deg);z-index:30;opacity:.6;}
+.fan-card[data-pos="-2"]{transform:translate(-150px,38px) scale(.68) rotate(-20deg);z-index:30;opacity:.6;}
+.fan-card[data-pos="3"],.fan-card[data-pos="-3"]{transform:translate(0,50px) scale(.5) rotate(0deg);z-index:10;opacity:0;pointer-events:none;}
+
+.fan-arrows{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:18px;}
+.fan-arrow{
+  width:38px;height:38px;border-radius:50%;border:none;background:var(--pill);color:#fff;
+  font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:transform .15s ease;
+}
+.fan-arrow:hover{transform:scale(1.08);}
+.fan-dots{display:flex;gap:6px;}
+.fan-dots span{width:6px;height:6px;border-radius:50%;background:var(--rule);transition:background .2s ease,transform .2s ease;}
+.fan-dots span.active{background:var(--ink);transform:scale(1.3);}
+
+@media (max-width:620px){
+  .fan{height:200px;}
+  .fan-card{width:110px;height:148px;border-radius:12px;}
+  .fan-card[data-pos="1"]{transform:translate(52px,14px) scale(.8) rotate(10deg);}
+  .fan-card[data-pos="-1"]{transform:translate(-52px,14px) scale(.8) rotate(-10deg);}
+  .fan-card[data-pos="2"]{transform:translate(96px,28px) scale(.62) rotate(18deg);}
+  .fan-card[data-pos="-2"]{transform:translate(-96px,28px) scale(.62) rotate(-18deg);}
 }
 
 /* prompt / search pill */

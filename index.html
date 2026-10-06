@@ -63,13 +63,20 @@
             <span class="badge b-culture">Culture</span>
           </div>
 
-          <div class="fan">
-            <div class="fan-card"><img src="./tnn-culture.jpeg" alt="TNN Culture" loading="lazy" /></div>
-            <div class="fan-card"><img src="./tnn-sport.jpeg" alt="TNN Sport" loading="lazy" /></div>
-            <div class="fan-card"><img src="./tnn-news.jpeg" alt="TNN News" loading="lazy" /></div>
-            <div class="fan-card"><img src="./tnn-verify.jpeg" alt="TNN Verify" loading="lazy" /></div>
-            <div class="fan-card"><img src="./tnn-english.jpeg" alt="TNN English" loading="lazy" /></div>
-            <div class="fan-card"><img src="./tnn-motion.jpeg" alt="TNN Motion" loading="lazy" /></div>
+                    <div class="fan-wrap">
+            <div class="fan" id="fan">
+              <div class="fan-card" style="--ring:var(--news)"><img src="./tnn-news.jpeg" alt="TNN News" loading="lazy" /></div>
+              <div class="fan-card" style="--ring:var(--sport)"><img src="./tnn-sport.jpeg" alt="TNN Sport" loading="lazy" /></div>
+              <div class="fan-card" style="--ring:var(--english)"><img src="./tnn-english.jpeg" alt="TNN English" loading="lazy" /></div>
+              <div class="fan-card" style="--ring:var(--verify)"><img src="./tnn-verify.jpeg" alt="TNN Verify" loading="lazy" /></div>
+              <div class="fan-card" style="--ring:var(--motion)"><img src="./tnn-motion.jpeg" alt="TNN Motion" loading="lazy" /></div>
+              <div class="fan-card" style="--ring:var(--culture)"><img src="./tnn-culture.jpeg" alt="TNN Culture" loading="lazy" /></div>
+            </div>
+            <div class="fan-arrows">
+              <button class="fan-arrow" id="fan-prev" type="button" aria-label="Previous desk">‹</button>
+              <div class="fan-dots" id="fan-dots"></div>
+              <button class="fan-arrow" id="fan-next" type="button" aria-label="Next desk">›</button>
+            </div>
           </div>
 
           <form class="hero-prompt" id="hero-search">
